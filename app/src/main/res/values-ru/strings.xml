@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Russian strings; untranslatable ones live only in values/strings.xml. -->
+<resources>
+    <string name="settings">Настройки</string>
+    <string name="section_favorites">Избранное</string>
+    <string name="section_all">Все приложения</string>
+    <string name="menu_add_favorite">В избранное</string>
+    <string name="menu_remove_favorite">Убрать из избранного</string>
+    <string name="menu_move">Переместить</string>
+    <string name="menu_hide">Скрыть</string>
+    <string name="menu_info">О приложении</string>
+    <string name="menu_uninstall">Удалить</string>
+    <string name="move_hint">◀ ▶ ▲ ▼ — переместить, OK — готово</string>
+    <string name="settings_system">Настройки Android</string>
+    <string name="hidden_empty">Скрытых приложений нет</string>
+    <string name="done">Готово</string>
+    <string name="cannot_open">Не удалось открыть</string>
+
+    <!-- Key service -->
+    <string name="service_label">Sofa TV: кнопки пульта</string>
+    <string name="service_description">Перехват кнопки Home и переназначение кнопок пульта в Sofa TV, панель мониторинга и таймер сна. Получает нажатия кнопок и название открытого приложения. Содержимое экрана читает только при очистке памяти способом «принудительная остановка» — чтобы нажать «Остановить» в настройках приложения.</string>
+
+    <!-- Remapper settings -->
+    <string name="service_off_title">Служба кнопок выключена</string>
+    <string name="close">Закрыть</string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="accessibility_path_hint">«Специальные возможности»: «Настройки устройства → Специальные возможности»</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="keys_title">Переназначение кнопок</string>
+    <string name="remap_enabled">Переназначение кнопок</string>
+    <string name="remap_off">выкл</string>
+    <string name="remap_system_warning">Переназначение системных кнопок (стрелки, OK, «Назад») может нарушить управление телевизором. Если что-то сломалось — удерживайте «Громкость −» 7 секунд: переназначение выключится.</string>
+    <string name="remap_system_key_warning">Это системная кнопка: неправильная настройка может нарушить управление телевизором. Отменить — удерживайте «Громкость −» 7 секунд.</string>
+    <string name="remap_reset_done">Переназначение кнопок выключено. Включить: Настройки → Кнопки пульта → Переназначение кнопок</string>
+    <string name="timings_title">Тайминги нажатий</string>
+    <string name="keys_add">+ Добавить кнопку</string>
+    <string name="keys_not_set">не настроена</string>
+    <string name="key_delete">Удалить кнопку</string>
+    <string name="capture_title">Нажмите кнопку на пульте</string>
+    <string name="capture_message">Окно закроется само через %d с.</string>
+    <string name="capture_no_service">Служба кнопок выключена: Home и часть кнопок поймать не получится.</string>
+    <string name="key_single_lost">Без root одиночное нажатие этой кнопки повторить нельзя: пока ему не назначено действие, оно ничего не делает.</string>
+
+    <string name="gesture_single">Одиночное</string>
+    <string name="gesture_double">Двойное</string>
+    <string name="gesture_long">Удержание</string>
+
+    <string name="ms">%d мс</string>
+
+    <!-- Actions -->
+    <string name="action_default">Как обычно</string>
+    <string name="action_none">Ничего (отключить)</string>
+    <string name="action_back">Назад</string>
+    <string name="action_home">Sofa TV: главный экран</string>
+    <string name="action_system_home">Домой (системный лаунчер)</string>
+    <string name="action_previous_app">Предыдущее приложение</string>
+    <string name="action_recents">Недавние приложения</string>
+    <string name="action_notifications">Уведомления</string>
+    <string name="action_volume_up">Громкость +</string>
+    <string name="action_volume_down">Громкость −</string>
+    <string name="action_mute">Без звука</string>
+    <string name="action_play_pause">Воспроизведение / пауза</string>
+    <string name="action_media_next">Следующий трек</string>
+    <string name="action_media_previous">Предыдущий трек</string>
+    <string name="action_power_dialog">Меню питания</string>
+    <string name="action_lock">Выключить экран (сон)</string>
+    <string name="action_screenshot">Снимок экрана</string>
+    <string name="action_pick_app">Запустить приложение…</string>
+    <string name="action_pick_settings">Экран настроек…</string>
+    <string name="action_pick_shortcut">Ярлык приложения…</string>
+    <string name="action_pick_intent">Свой Intent / ссылка…</string>
+    <string name="action_app_named">Запустить: %s</string>
+    <string name="action_settings_named">Настройки: %s</string>
+    <string name="intent_hint">https://…, intent:…;end или пакет/.Активность</string>
+    <string name="intent_invalid">Не удалось разобрать</string>
+    <string name="shortcut_none">Нет приложений, создающих ярлыки</string>
+    <string name="shortcut_unsupported">Это приложение не вернуло ярлык</string>
+
+    <string name="screen_all">Все настройки</string>
+    <string name="screen_sound">Звук</string>
+    <string name="screen_display">Экран</string>
+    <string name="screen_apps">Приложения</string>
+    <string name="screen_storage">Память</string>
+    <string name="screen_date">Дата и время</string>
+    <string name="screen_locale">Язык</string>
+    <string name="screen_accessibility">Спецвозможности</string>
+    <string name="screen_developer">Для разработчиков</string>
+
+    <string name="action_panel">Sofa TV: панель мониторинга — показать / скрыть</string>
+    <string name="action_panel_peek">Sofa TV: панель мониторинга на 5 с</string>
+    <string name="panel_shown_always">Панель мониторинга включена постоянно</string>
+    <string name="panel_hidden">Панель мониторинга выключена</string>
+    <string name="action_sleep_timer">Sofa TV: таймер сна</string>
+    <string name="action_clean_memory">Sofa TV: очистить память</string>
+
+    <!-- Status panel -->
+    <string name="stat_freq">%.1f ГГц</string>
+    <string name="stat_sleep">Сон через %d мин</string>
+    <string name="stat_sleep_seconds">Сон через %d с</string>
+    <string name="stat_sleep_short">%d мин</string>
+    <string name="stat_sleep_short_seconds">%d с</string>
+    <string name="stat_dbm">%d дБм</string>
+    <string name="seconds">%d с</string>
+    <string name="unit_mb">%.0f МБ</string>
+    <string name="unit_gb">%.1f ГБ</string>
+    <string name="unit_kbit">%.0f Кбит/с</string>
+    <string name="unit_mbit">%.1f Мбит/с</string>
+
+    <!-- Sleep timer -->
+    <string name="sleep_title">Таймер сна</string>
+    <string name="sleep_not_set">Не установлен</string>
+    <string name="sleep_running">ТВ выключится через %1$d мин, в %2$s</string>
+    <string name="sleep_off">Выкл</string>
+    <string name="sleep_minutes">%d мин</string>
+    <string name="sleep_seconds">%d с</string>
+    <string name="sleep_started">ТВ выключится в %s</string>
+    <string name="sleep_cancelled">Таймер сна выключен</string>
+    <string name="sleep_warning">ТВ выключится через %d с</string>
+    <string name="sleep_extend">Продлить на %d мин</string>
+    <string name="sleep_disable">Отключить таймер</string>
+    <string name="sleep_now">Выключить сейчас</string>
+    <string name="sleep_unsupported">Выключение по таймеру нужно Android 9+</string>
+    <string name="sleep_needs_service">Таймеру сна нужна служба кнопок — включите её в настройках</string>
+
+    <!-- Memory cleanup -->
+    <string name="clean_button">Очистить память</string>
+    <string name="clean_done_stopped">Остановлено приложений: %1$d</string>
+    <string name="clean_done_before">Было: ОЗУ %1$d МБ · swap %2$d МБ</string>
+    <string name="clean_done_after">Стало: ОЗУ %1$d МБ · swap %2$d МБ</string>
+    <string name="clean_done_freed">Очищено: ОЗУ %1$d МБ · swap %2$d МБ</string>
+    <string name="clean_nothing">Нечего останавливать: запущенных приложений не найдено</string>
+    <string name="clean_needs_service">Принудительной остановке нужна служба кнопок — включите её</string>
+    <string name="clean_force_stop_unsupported">Принудительная остановка на этом устройстве не сработала: не удалось распознать страницу приложения в настройках. Выберите другой способ: «Очистка памяти → Способ очистки памяти»</string>
+    <string name="clean_guard_missing">Safety Guard не найден — выберите другой способ очистки</string>
+    <string name="clean_progress_title">Очистка памяти</string>
+    <string name="clean_progress">%1$d из %2$d: %3$s\n«Назад» — прервать</string>
+    <string name="clean_method_title">Способ очистки памяти</string>
+    <string name="clean_method_standard">Стандартный (фоновые процессы)</string>
+    <string name="clean_method_force_stop">Принудительная остановка (через настройки)</string>
+    <string name="clean_method_standard_short">Стандартный</string>
+    <string name="clean_method_force_stop_short">Принудительная остановка</string>
+
+    <!-- Keys -->
+    <string name="key_back">Назад</string>
+    <string name="key_up">Вверх</string>
+    <string name="key_down">Вниз</string>
+    <string name="key_left">Влево</string>
+    <string name="key_right">Вправо</string>
+    <string name="key_menu">Меню</string>
+    <string name="key_volume_up">Громкость +</string>
+    <string name="key_volume_down">Громкость −</string>
+    <string name="key_mute">Без звука</string>
+    <string name="key_channel_up">Канал +</string>
+    <string name="key_channel_down">Канал −</string>
+    <string name="key_settings">Настройки</string>
+    <string name="key_input">Источник</string>
+    <string name="key_search">Поиск</string>
+    <string name="key_voice">Голосовой ассистент</string>
+    <string name="key_guide">Гид</string>
+    <string name="key_info">Инфо</string>
+    <string name="key_red">Красная</string>
+    <string name="key_green">Зелёная</string>
+    <string name="key_yellow">Жёлтая</string>
+    <string name="key_blue">Синяя</string>
+    <string name="key_scan_code">Скан-код %d</string>
+    <string name="key_code">Код %d</string>
+
+    <!-- Settings side panel -->
+    <string name="version">Версия</string>
+    <string name="ram_used">Используемая RAM</string>
+    <string name="ram_value">%d МБ</string>
+    <string name="ram_refresh">Обновить</string>
+    <string name="ram_total">Всего</string>
+    <string name="ram_graphics">Графика</string>
+    <string name="ram_code">Код</string>
+    <string name="ram_other">Прочее и системное</string>
+    <string name="ram_hint">Память самого лаунчера вместе со службой кнопок (PSS, как в dumpsys meminfo).</string>
+    <string name="hardware_acceleration">Аппаратное ускорение</string>
+    <string name="hardware_acceleration_hint">Вкл — плавнее, но больше памяти (примерно на 20–40 МБ). Выкл — менее плавно, но меньше памяти.</string>
+    <string name="group_performance">Производительность</string>
+    <string name="collapse_all_apps">Сворачивать все приложения</string>
+    <string name="collapse_all_apps_hint">Если в избранном есть хотя бы одно приложение, остальные сворачиваются под кнопку «Показать все приложения» под избранным. Без избранного все приложения видны всегда.</string>
+    <string name="grid_columns">Столбцов в сетке</string>
+    <string name="grid_columns_auto">Авто (%d)</string>
+    <string name="tile_height">Высота плиток</string>
+        <string name="tile_height_default">100%% (16:9)</string>
+    <string name="all_apps_show">Показать все приложения (%d)</string>
+    <string name="all_apps_hide">Скрыть все приложения</string>
+    <string name="group_keys">Кнопки пульта</string>
+    <string name="group_status">Панель состояния</string>
+    <string name="group_clean">Очистка памяти</string>
+    <string name="group_apps">Список приложений</string>
+    <string name="group_hidden">Скрытые приложения</string>
+    <string name="service_toggle">Служба кнопок</string>
+    <string name="service_off_warning">Служба Sofa TV выключена — переназначение кнопок и перехват Home не работают. Включите «Служба кнопок» ниже.</string>
+    <string name="home_intercept">Перехват Home</string>
+    <string name="timings_value">%1$d / %2$d мс</string>
+    <string name="excluded_short">Исключённые приложения</string>
+    <string name="excluded_hint">В отмеченных приложениях не работают кнопки, которые вы переназначили сами. Перехват Home (если включён) работает везде, независимо от этого списка.</string>
+    <string name="keys_assigned">назначено: %d</string>
+    <string name="service_enable_hint">Включите «Sofa TV: кнопки пульта» и вернитесь назад</string>
+    <string name="service_enable_manual">На этом телевизоре раздел «Специальные возможности» нельзя открыть напрямую. Откройте настройки и перейдите в «Настройки устройства → Специальные возможности» (на некоторых ТВ — «Система → Специальные возможности»), затем включите «Sofa TV: кнопки пульта».</string>
+    <string name="status_home">На главном экране</string>
+    <string name="status_overlay">Поверх приложений</string>
+    <string name="status_interval">Обновление</string>
+    <string name="status_items">Что показывать</string>
+    <string name="status_items_value">%1$d из %2$d</string>
+    <string name="status_overlay_needs_service">Панель появится, когда включите службу кнопок</string>
+    <string name="clean_whitelist_short">Не трогать при очистке</string>
+    <string name="clean_whitelist_hint">Отмеченные не закрываются. Системные приложения и приложения, у которых запущены собственные службы, тоже не будут закрыты</string>
+    <string name="hidden_restore">Вернуть</string>
+    <string name="sleep_button">Таймер сна</string>
+    <string name="item_clock">Часы</string>
+    <string name="item_sleep">Таймер сна</string>
+    <string name="item_ram">ОЗУ</string>
+    <string name="item_disk">Диск</string>
+    <string name="item_cpu">CPU: температура и частота</string>
+    <string name="item_cpu_hint">Температура и частота берутся из данных, которые открывает прошивка ТВ. На разных устройствах их может не быть или они могут быть неточными.</string>
+    <string name="item_traffic">Скорость сети</string>
+    <string name="item_ip">IP-адрес</string>
+
+    <!-- Language -->
+    <string name="language">Язык</string>
+    <string name="language_system">Как в системе</string>
+    <string name="language_system_value">Как в системе (%s)</string>
+
+    <!-- Updates -->
+    <string name="updates">Обновления</string>
+    <string name="update_button">Обновить</string>
+    <string name="update_check">Проверить обновления</string>
+    <string name="update_checking">Проверка…</string>
+    <string name="update_up_to_date">Установлена последняя версия</string>
+    <string name="update_check_failed">Не удалось проверить обновления</string>
+    <string name="update_available">Доступна версия %s</string>
+    <string name="update_install">Обновить и установить</string>
+    <string name="update_downloading">Загрузка %d%%</string>
+    <string name="update_installing">Установка…</string>
+    <string name="update_install_failed">Не удалось обновить. Попробуйте ещё раз</string>
+    <string name="update_install_failed_reason">Не удалось обновить: %s</string>
+    <string name="update_install_cancelled">Установка отменена</string>
+    <string name="update_allow_install">Разрешите Sofa TV устанавливать приложения и снова нажмите «Обновить и установить»</string>
+    <string name="update_allow_install_manual">Разрешите Sofa TV установку неизвестных приложений в настройках ТВ («Приложения → Специальный доступ» или «Безопасность»), затем снова нажмите «Обновить и установить»</string>
+    <string name="update_hint">Проверяется автоматически раз в сутки.</string>
+    <string name="update_hint_last">Проверяется автоматически раз в сутки. Последняя проверка: %s</string>
+</resources>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Default (English) strings; Russian is in values-ru. -->
+<resources>
+    <string name="app_name" translatable="false">Sofa TV</string>
+    <string name="settings">Settings</string>
+    <string name="section_favorites">Favorites</string>
+    <string name="section_all">All apps</string>
+    <string name="menu_add_favorite">Add to favorites</string>
+    <string name="menu_remove_favorite">Remove from favorites</string>
+    <string name="menu_move">Move</string>
+    <string name="menu_hide">Hide</string>
+    <string name="menu_info">App info</string>
+    <string name="menu_uninstall">Uninstall</string>
+    <string name="move_hint">◀ ▶ ▲ ▼ to move, OK when done</string>
+    <string name="settings_system">Android settings</string>
+    <string name="hidden_empty">No hidden apps</string>
+    <string name="done">Done</string>
+    <string name="cannot_open">Could not open</string>
+
+    <!-- Key service -->
+    <string name="service_label">Sofa TV: remote keys</string>
+    <string name="service_description">Intercepts the Home key and remaps remote keys in Sofa TV, shows the status panel and runs the sleep timer. Receives key presses and the name of the open app. Reads screen content only while memory cleanup runs in “force stop” mode, to press “Force stop” in the app settings.</string>
+
+    <!-- Remapper settings -->
+    <string name="service_off_title">Key service is off</string>
+    <string name="close">Close</string>
+    <string name="open_settings">Open settings</string>
+    <string name="accessibility_path_hint">Accessibility: “Device Preferences → Accessibility”</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="keys_title">Key remapping</string>
+    <string name="remap_enabled">Key remapping</string>
+    <string name="remap_off">off</string>
+    <string name="remap_system_warning">Remapping system keys (arrows, OK, Back) can break TV control. If something goes wrong, hold Volume − for 7 seconds: remapping turns off.</string>
+    <string name="remap_system_key_warning">This is a system key: a wrong setting can break TV control. To undo, hold Volume − for 7 seconds.</string>
+    <string name="remap_reset_done">Key remapping is off. To turn it on: Settings → Remote keys → Key remapping</string>
+    <string name="timings_title">Press timings</string>
+    <string name="keys_add">+ Add key</string>
+    <string name="keys_not_set">not set</string>
+    <string name="key_delete">Delete key</string>
+    <string name="capture_title">Press a key on the remote</string>
+    <string name="capture_message">This window closes by itself in %d s.</string>
+    <string name="capture_no_service">The key service is off: Home and some other keys cannot be caught.</string>
+    <string name="key_single_lost">Without root, a single press of this key cannot be replayed: until it has an action, it does nothing.</string>
+
+    <string name="gesture_single">Single press</string>
+    <string name="gesture_double">Double press</string>
+    <string name="gesture_long">Hold</string>
+
+    <string name="ms">%d ms</string>
+
+    <!-- Actions -->
+    <string name="action_default">Default</string>
+    <string name="action_none">Nothing (disable)</string>
+    <string name="action_back">Back</string>
+    <string name="action_home">Sofa TV: home screen</string>
+    <string name="action_system_home">Home (system launcher)</string>
+    <string name="action_previous_app">Previous app</string>
+    <string name="action_recents">Recent apps</string>
+    <string name="action_notifications">Notifications</string>
+    <string name="action_volume_up">Volume +</string>
+    <string name="action_volume_down">Volume −</string>
+    <string name="action_mute">Mute</string>
+    <string name="action_play_pause">Play / pause</string>
+    <string name="action_media_next">Next track</string>
+    <string name="action_media_previous">Previous track</string>
+    <string name="action_power_dialog">Power menu</string>
+    <string name="action_lock">Turn off screen (sleep)</string>
+    <string name="action_screenshot">Screenshot</string>
+    <string name="action_pick_app">Launch an app…</string>
+    <string name="action_pick_settings">Settings screen…</string>
+    <string name="action_pick_shortcut">App shortcut…</string>
+    <string name="action_pick_intent">Custom intent / link…</string>
+    <string name="action_app_named">Launch: %s</string>
+    <string name="action_settings_named">Settings: %s</string>
+    <string name="intent_hint">https://…, intent:…;end or package/.Activity</string>
+    <string name="intent_invalid">Could not parse</string>
+    <string name="shortcut_none">No apps provide shortcuts</string>
+    <string name="shortcut_unsupported">This app did not return a shortcut</string>
+
+    <string name="screen_all">All settings</string>
+    <string name="screen_wifi" translatable="false">Wi-Fi</string>
+    <string name="screen_bluetooth" translatable="false">Bluetooth</string>
+    <string name="screen_sound">Sound</string>
+    <string name="screen_display">Display</string>
+    <string name="screen_apps">Apps</string>
+    <string name="screen_storage">Storage</string>
+    <string name="screen_date">Date &amp; time</string>
+    <string name="screen_locale">Language</string>
+    <string name="screen_accessibility">Accessibility</string>
+    <string name="screen_developer">Developer options</string>
+
+    <string name="action_panel">Sofa TV: status panel, show / hide</string>
+    <string name="action_panel_peek">Sofa TV: status panel for 5 s</string>
+    <string name="panel_shown_always">Status panel is always on</string>
+    <string name="panel_hidden">Status panel is off</string>
+    <string name="action_sleep_timer">Sofa TV: sleep timer</string>
+    <string name="action_clean_memory">Sofa TV: clean memory</string>
+
+    <!-- Status panel -->
+    <string name="stat_temp" translatable="false">%d°</string>
+    <string name="stat_freq">%.1f GHz</string>
+    <string name="stat_traffic" translatable="false">↓ %1$s  ↑ %2$s</string>
+    <string name="stat_ethernet" translatable="false">Ethernet</string>
+    <string name="stat_sleep">Sleep in %d min</string>
+    <string name="stat_sleep_seconds">Sleep in %d s</string>
+    <string name="stat_sleep_short">%d min</string>
+    <string name="stat_sleep_short_seconds">%d s</string>
+    <string name="stat_dbm">%d dBm</string>
+    <string name="seconds">%d s</string>
+    <string name="unit_mb">%.0f MB</string>
+    <string name="unit_gb">%.1f GB</string>
+    <string name="unit_kbit">%.0f kbit/s</string>
+    <string name="unit_mbit">%.1f Mbit/s</string>
+
+    <!-- Sleep timer -->
+    <string name="sleep_title">Sleep timer</string>
+    <string name="sleep_not_set">Not set</string>
+    <string name="sleep_running">The TV turns off in %1$d min, at %2$s</string>
+    <string name="sleep_off">Off</string>
+    <string name="sleep_minutes">%d min</string>
+    <string name="sleep_seconds">%d s</string>
+    <string name="sleep_started">The TV turns off at %s</string>
+    <string name="sleep_cancelled">Sleep timer is off</string>
+    <string name="sleep_warning">The TV turns off in %d s</string>
+    <string name="sleep_extend">Extend by %d min</string>
+    <string name="sleep_disable">Turn off timer</string>
+    <string name="sleep_now">Turn off now</string>
+    <string name="sleep_unsupported">Turning off by timer needs Android 9+</string>
+    <string name="sleep_needs_service">The sleep timer needs the key service. Turn it on in settings</string>
+
+    <!-- Memory cleanup -->
+    <string name="clean_button">Clean memory</string>
+    <string name="clean_done_stopped">Apps stopped: %1$d</string>
+    <string name="clean_done_before">Before: RAM %1$d MB · swap %2$d MB</string>
+    <string name="clean_done_after">After: RAM %1$d MB · swap %2$d MB</string>
+    <string name="clean_done_freed">Freed: RAM %1$d MB · swap %2$d MB</string>
+    <string name="clean_nothing">Nothing to stop: no running apps found</string>
+    <string name="clean_needs_service">Force stop needs the key service. Turn it on</string>
+    <string name="clean_force_stop_unsupported">Force stop did not work on this device: the app page in settings could not be recognized. Choose another method: “Memory cleanup → Cleanup method”</string>
+    <string name="clean_guard_missing">Safety Guard not found. Choose another cleanup method</string>
+    <string name="clean_progress_title">Cleaning memory</string>
+    <string name="clean_progress">%1$d of %2$d: %3$s\nBack to stop</string>
+    <string name="clean_method_title">Cleanup method</string>
+    <string name="clean_method_standard">Standard (background processes)</string>
+    <string name="clean_method_safety_guard" translatable="false">Safety Guard (TCL)</string>
+    <string name="clean_method_force_stop">Force stop (through settings)</string>
+    <string name="clean_method_standard_short">Standard</string>
+    <string name="clean_method_safety_guard_short" translatable="false">Safety Guard</string>
+    <string name="clean_method_force_stop_short">Force stop</string>
+
+    <!-- Keys -->
+    <string name="key_home" translatable="false">Home</string>
+    <string name="key_back">Back</string>
+    <string name="key_ok" translatable="false">OK</string>
+    <string name="key_up">Up</string>
+    <string name="key_down">Down</string>
+    <string name="key_left">Left</string>
+    <string name="key_right">Right</string>
+    <string name="key_menu">Menu</string>
+    <string name="key_volume_up">Volume +</string>
+    <string name="key_volume_down">Volume −</string>
+    <string name="key_mute">Mute</string>
+    <string name="key_channel_up">Channel +</string>
+    <string name="key_channel_down">Channel −</string>
+    <string name="key_play_pause" translatable="false">Play/Pause</string>
+    <string name="key_settings">Settings</string>
+    <string name="key_input">Input</string>
+    <string name="key_search">Search</string>
+    <string name="key_voice">Voice assistant</string>
+    <string name="key_guide">Guide</string>
+    <string name="key_info">Info</string>
+    <string name="key_red">Red</string>
+    <string name="key_green">Green</string>
+    <string name="key_yellow">Yellow</string>
+    <string name="key_blue">Blue</string>
+    <string name="key_scan_code">Scan code %d</string>
+    <string name="key_code">Code %d</string>
+
+    <!-- Settings side panel -->
+    <string name="version">Version</string>
+    <string name="ram_used">RAM used</string>
+    <string name="ram_value">%d MB</string>
+    <string name="ram_refresh">Refresh</string>
+    <string name="ram_total">Total</string>
+    <string name="ram_graphics">Graphics</string>
+    <string name="ram_native" translatable="false">Native</string>
+    <string name="ram_java" translatable="false">Java</string>
+    <string name="ram_code">Code</string>
+    <string name="ram_other">Other and system</string>
+    <string name="ram_hint">Memory of the launcher itself, including the key service (PSS, as in dumpsys meminfo).</string>
+    <string name="hardware_acceleration">Hardware acceleration</string>
+    <string name="hardware_acceleration_hint">On: smoother, but uses more memory (about 20–40 MB). Off: less smooth, but uses less memory.</string>
+    <string name="group_performance">Performance</string>
+    <string name="collapse_all_apps">Collapse all apps</string>
+    <string name="collapse_all_apps_hint">If there is at least one favorite, the other apps collapse under the “Show all apps” button below the favorites. Without favorites, all apps are always visible.</string>
+    <string name="grid_columns">Grid columns</string>
+    <string name="grid_columns_auto">Auto (%d)</string>
+    <string name="tile_height">Tile height</string>
+    <!-- %% because settings strings go through getString(id, *args): a single % breaks formatting. -->
+    <string name="tile_height_default">100%% (16:9)</string>
+    <string name="tile_height_percent" translatable="false">%d%%</string>
+    <string name="all_apps_show">Show all apps (%d)</string>
+    <string name="all_apps_hide">Hide all apps</string>
+    <string name="group_keys">Remote keys</string>
+    <string name="group_status">Status panel</string>
+    <string name="group_clean">Memory cleanup</string>
+    <string name="group_apps">App list</string>
+    <string name="group_hidden">Hidden apps</string>
+    <string name="service_toggle">Key service</string>
+    <string name="service_off_warning">The Sofa TV service is off: key remapping and Home interception do not work. Turn on “Key service” below.</string>
+    <string name="home_intercept">Intercept Home</string>
+    <string name="timings_value">%1$d / %2$d ms</string>
+    <string name="excluded_short">Excluded apps</string>
+    <string name="excluded_hint">Keys you remapped yourself do not work in the checked apps. Home interception (if on) works everywhere, regardless of this list.</string>
+    <string name="keys_assigned">assigned: %d</string>
+    <string name="service_enable_hint">Turn on “Sofa TV: remote keys” and come back</string>
+    <string name="service_enable_manual">Accessibility settings cannot be opened directly on this TV. Open settings and go to “Device Preferences → Accessibility” (on some TVs “System → Accessibility”), then turn on “Sofa TV: remote keys”.</string>
+    <string name="status_home">On the home screen</string>
+    <string name="status_overlay">Over apps</string>
+    <string name="status_interval">Refresh rate</string>
+    <string name="status_items">What to show</string>
+    <string name="status_items_value">%1$d of %2$d</string>
+    <string name="status_overlay_needs_service">The panel appears once you turn on the key service</string>
+    <string name="clean_whitelist_short">Keep during cleanup</string>
+    <string name="clean_whitelist_hint">Checked apps are not closed. System apps and apps running their own services are not closed either</string>
+    <string name="hidden_restore">Restore</string>
+    <string name="sleep_button">Sleep timer</string>
+    <string name="item_clock">Clock</string>
+    <string name="item_sleep">Sleep timer</string>
+    <string name="item_ram">RAM</string>
+    <string name="item_swap" translatable="false">Swap</string>
+    <string name="item_disk">Storage</string>
+    <string name="item_cpu">CPU: temperature and frequency</string>
+    <string name="item_cpu_hint">Temperature and frequency come from data exposed by the TV firmware. Some devices do not have it, or it may be inaccurate.</string>
+    <string name="item_traffic">Network speed</string>
+    <string name="item_network" translatable="false">Wi-Fi / Ethernet</string>
+    <string name="item_ip">IP address</string>
+
+    <!-- Language -->
+    <string name="language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_system_value">System (%s)</string>
+    <string name="language_en" translatable="false">English</string>
+    <string name="language_ru" translatable="false">Русский</string>
+
+    <!-- Updates -->
+    <string name="updates">Updates</string>
+    <string name="update_button">Update</string>
+    <string name="update_check">Check for updates</string>
+    <string name="update_checking">Checking…</string>
+    <string name="update_up_to_date">Latest version installed</string>
+    <string name="update_check_failed">Could not check for updates</string>
+    <string name="update_available">Version %s is available</string>
+    <string name="update_install">Update and install</string>
+    <string name="update_downloading">Downloading %d%%</string>
+    <string name="update_installing">Installing…</string>
+    <string name="update_install_failed">Update failed. Try again</string>
+    <string name="update_install_failed_reason">Update failed: %s</string>
+    <string name="update_install_cancelled">Installation cancelled</string>
+    <string name="update_allow_install">Allow Sofa TV to install apps, then press “Update and install” again</string>
+    <string name="update_allow_install_manual">Allow installing unknown apps for Sofa TV in the TV settings (Apps → Special app access, or Security), then press “Update and install” again</string>
+    <string name="update_hint">Checked automatically once a day.</string>
+    <string name="update_hint_last">Checked automatically once a day. Last check: %s</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Standard Android TV banner: 160×90 dp (320×180 px on xhdpi). -->
+    <dimen name="tile_width">160dp</dimen>
+    <dimen name="tile_height">90dp</dimen>
+    <dimen name="tile_gap">16dp</dimen>
+    <dimen name="tile_radius">6dp</dimen>
+    <dimen name="tile_focus_stroke">3dp</dimen>
+    <dimen name="tile_icon">40dp</dimen>
+    <dimen name="tile_label">13sp</dimen>
+    <dimen name="screen_padding">48dp</dimen>
+    <dimen name="all_apps_button_height">40dp</dimen>
+</resources>

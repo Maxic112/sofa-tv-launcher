@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Orange "update available" dot on the header button and the settings row. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/warning" />
+    <size
+        android:width="8dp"
+        android:height="8dp" />
+</shape>

@@ -1,0 +1,72 @@
+# Builds a signed release APK and publishes it as a GitHub release.
+# Runs only on a version tag (v0.14.2 …) or by hand, to save Actions minutes.
+# Secrets (Settings → Secrets and variables → Actions):
+#   SIGNING_KEYSTORE_BASE64  base64 of the .jks keystore
+#   SIGNING_STORE_PASSWORD, SIGNING_KEY_ALIAS, SIGNING_KEY_PASSWORD
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Check that the tag matches versionName
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          version=$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' app/build.gradle.kts)
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match versionName $version" >&2
+            exit 1
+          fi
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+
+      - name: Restore the signing key
+        env:
+          KEYSTORE: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
+        run: echo "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/release.jks"
+
+      - name: Build
+        env:
+          STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+        run: |
+          ./gradlew assembleRelease \
+            -Psofatv.storeFile="$RUNNER_TEMP/release.jks" \
+            -Psofatv.storePassword="$STORE_PASSWORD" \
+            -Psofatv.keyAlias="$KEY_ALIAS" \
+            -Psofatv.keyPassword="$KEY_PASSWORD"
+          version=${VERSION:-$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' app/build.gradle.kts)}
+          cp app/build/outputs/apk/release/app-release.apk "sofa-tv-launcher-$version.apk"
+          echo "APK=sofa-tv-launcher-$version.apk" >> "$GITHUB_ENV"
+
+      - name: Upload the APK as a run artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk
+          path: ${{ env.APK }}
+
+      # Only for tags: a manual run just builds, so it can't publish a release by mistake.
+      - name: Publish the release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes=$(awk -v v="## $VERSION " 'index($0, v) == 1 {on = 1; next} /^## / {on = 0} on' CHANGELOG.md)
+          gh release create "$GITHUB_REF_NAME" "$APK" --title "$VERSION" --notes "${notes:-Sofa TV Launcher $VERSION}"

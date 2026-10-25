@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#FF101317</color>
+    <color name="tile">#FF232832</color>
+    <color name="text_primary">#FFE8EAED</color>
+    <color name="text_secondary">#FF9AA0A6</color>
+    <color name="focus">#FFFFFFFF</color>
+    <color name="moving">#FF4FC3F7</color>
+    <color name="button_focused">#33FFFFFF</color>
+    <color name="overlay">#E6101317</color>
+    <color name="panel">#FA1A1F27</color>
+    <color name="warning">#FFFFB74D</color>
+    <color name="danger">#FFEF5350</color>
+</resources>
