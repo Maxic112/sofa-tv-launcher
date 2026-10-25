@@ -13,6 +13,9 @@ class HeaderItem(id: Long, val title: String) : HomeItem(id)
 
 class AppItem(id: Long, val app: AppEntry, val favorite: Boolean, val moving: Boolean) : HomeItem(id)
 
+/** A TV input tile ([TvInputs]). */
+class InputItem(id: Long, val input: TvInputs.Input) : HomeItem(id)
+
 /** The "Show / Hide all apps" button below the favorites. */
 class ButtonItem(id: Long, val title: String) : HomeItem(id)
 
@@ -26,6 +29,7 @@ class HomeAdapter(
         fun onLaunch(item: AppItem)
         fun onMenu(item: AppItem)
         fun onToggleAllApps()
+        fun onInput(item: InputItem)
     }
 
     private class Holder(view: View) : RecyclerView.ViewHolder(view)
@@ -53,6 +57,7 @@ class HomeAdapter(
                     a is HeaderItem && b is HeaderItem -> a.title == b.title
                     a is ButtonItem && b is ButtonItem -> a.title == b.title
                     a is AppItem && b is AppItem -> a.app.tileKey == b.app.tileKey && a.moving == b.moving
+                    a is InputItem && b is InputItem -> a.input.label == b.input.label && a.input.icon == b.input.icon
                     else -> false
                 }
             }
@@ -76,6 +81,7 @@ class HomeAdapter(
         is HeaderItem -> TYPE_HEADER
         is ButtonItem -> TYPE_BUTTON
         is AppItem -> TYPE_TILE
+        is InputItem -> TYPE_INPUT
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -108,6 +114,12 @@ class HomeAdapter(
                 setMargins(gap / 2, gap / 2, gap / 2, gap / 2)
             }
         }
+        if (viewType == TYPE_INPUT) {
+            val holder = Holder(tile)
+            tile.isLongClickable = false
+            tile.setOnClickListener { (items.getOrNull(holder.bindingAdapterPosition) as? InputItem)?.let(listener::onInput) }
+            return holder
+        }
         tileViews.add(tile)
         val holder = Holder(tile)
         tile.setOnClickListener { appAt(holder)?.let(listener::onLaunch) }
@@ -124,6 +136,7 @@ class HomeAdapter(
                 tile.moving = item.moving
                 tiles.bind(tile, item.app)
             }
+            is InputItem -> (holder.itemView as TileView).setInput(item.input)
         }
     }
 
@@ -134,5 +147,8 @@ class HomeAdapter(
         const val TYPE_HEADER = 0
         const val TYPE_TILE = 1
         const val TYPE_BUTTON = 2
+        const val TYPE_INPUT = 3
+
+        fun isTile(viewType: Int) = viewType == TYPE_TILE || viewType == TYPE_INPUT
     }
 }

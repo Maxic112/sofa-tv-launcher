@@ -53,6 +53,15 @@
                     android:duplicateParentState="false" />
             </FrameLayout>
 
+            <!-- Opens the TV input picker; shown when enabled in Settings → Home screen → Inputs. -->
+            <TextView
+                android:id="@+id/inputs"
+                style="@style/TopButton"
+                android:drawableStart="@drawable/ic_input_hdmi"
+                android:layout_marginEnd="8dp"
+                android:text="@string/inputs"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/sleep"
                 style="@style/TopButton"

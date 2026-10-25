@@ -11,7 +11,7 @@ import org.json.JSONObject
 
 /**
  * Action assigned to a key gesture. [arg] is a package, a settings screen action,
- * a media key code or an intent string; [name] is the label for shortcuts.
+ * a media key code, an intent string or a TV input id; [name] is the label for shortcuts and inputs.
  */
 class KeyAction(val type: String, val arg: String? = null, val name: String? = null) {
 
@@ -45,6 +45,8 @@ class KeyAction(val type: String, val arg: String? = null, val name: String? = n
         const val PANEL_PEEK = "panel_peek"
         const val SLEEP_TIMER = "sleep_timer"
         const val CLEAN_MEMORY = "clean_memory"
+        const val INPUT_PICKER = "input_picker"
+        const val INPUT = "input"
 
         /** Parameterless action for the picker: type, label, icon. */
         class Simple(val type: String, val label: Int, val icon: Int)
@@ -60,6 +62,7 @@ class KeyAction(val type: String, val arg: String? = null, val name: String? = n
             add(Simple(PANEL_PEEK, R.string.action_panel_peek, R.drawable.ic_timer_5))
             add(Simple(SLEEP_TIMER, R.string.action_sleep_timer, R.drawable.ic_bedtime))
             add(Simple(CLEAN_MEMORY, R.string.action_clean_memory, R.drawable.ic_cleaning_services))
+            add(Simple(INPUT_PICKER, R.string.action_input_picker, R.drawable.ic_input))
             add(Simple(BACK, R.string.action_back, R.drawable.ic_arrow_back))
             add(Simple(SYSTEM_HOME, R.string.action_system_home, R.drawable.ic_house))
             add(Simple(PREVIOUS_APP, R.string.action_previous_app, R.drawable.ic_flip_to_back))
@@ -112,6 +115,7 @@ class KeyAction(val type: String, val arg: String? = null, val name: String? = n
                     ?.let { context.getString(R.string.action_settings_named, context.getString(it.second)) }
                     ?: action.arg.orEmpty()
                 INTENT -> action.name ?: action.arg.orEmpty()
+                INPUT -> context.getString(R.string.action_input_named, action.name ?: action.arg.orEmpty())
                 MEDIA_KEY -> Keys.name(context, action.arg?.toIntOrNull() ?: 0)
                 else -> action.type
             }

@@ -264,6 +264,8 @@ class KeyService : AccessibilityService() {
             KeyAction.PANEL_PEEK -> overlays.peekPanel()
             KeyAction.SLEEP_TIMER -> overlays.showSleepPicker()
             KeyAction.CLEAN_MEMORY -> app.cleaner.clean(foreground)
+            KeyAction.INPUT_PICKER -> app.inputs.showPicker(this)
+            KeyAction.INPUT -> action.arg?.let { app.inputs.open(this, it) }
         }
     }
 

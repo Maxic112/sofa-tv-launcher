@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.15.0 — 2026-10-26
+
+- TV inputs: Settings → Home screen → Inputs. "Choose input" opens the firmware's input picker
+  (`com.android.tv.action.VIEW_INPUTS`), an "Inputs" button in the header (on by default) does the same,
+  and a row of input tiles (HDMI, tuner, AV) can be shown above or below the favorites.
+- The "App list" settings section is now called "Home screen".
+- Settings → Home screen: switches to hide the "Sleep timer" and "Clean memory" header buttons.
+- New remote key actions: "Sofa TV: choose input" (the input picker) and "TV input…" (switch
+  straight to a chosen input, e.g. HDMI 2).
+
 ## 0.14.2 — 2026-10-25
 
 - Updates from GitHub Releases: a daily check, an "Update" button with an orange dot on the home

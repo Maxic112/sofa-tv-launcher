@@ -6,13 +6,18 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
+import android.graphics.drawable.Drawable
 import android.text.TextPaint
 import android.text.TextUtils
 import android.view.View
 
-/** App tile: a single View with no children, everything is drawn in onDraw. */
+/** App or TV input tile: a single View with no children, everything is drawn in onDraw. */
 class TileView(context: Context) : View(context) {
     var app: AppEntry? = null
+
+    /** A TV input tile: its icon and label are drawn instead of an app image. */
+    private var input: TvInputs.Input? = null
+    private var inputIcon: Drawable? = null
 
     var moving = false
         set(value) {
@@ -43,11 +48,21 @@ class TileView(context: Context) : View(context) {
     }
     private val focusColor = context.getColor(R.color.focus)
     private val movingColor = context.getColor(R.color.moving)
+    private val inputColor = context.getColor(R.color.text_primary)
+    private val baseIconSize = resources.getDimensionPixelSize(R.dimen.tile_icon)
+    private val baseHeight = resources.getDimensionPixelSize(R.dimen.tile_height)
 
     init {
         isFocusable = true
         isClickable = true
         isLongClickable = true
+    }
+
+    fun setInput(value: TvInputs.Input?) {
+        if (input?.id == value?.id && input?.label == value?.label) return
+        input = value
+        inputIcon = value?.let { context.getDrawable(it.icon)?.mutate()?.apply { setTint(inputColor) } }
+        invalidate()
     }
 
     fun setBitmap(value: Bitmap?) {
@@ -64,7 +79,8 @@ class TileView(context: Context) : View(context) {
             canvas.drawBitmap(bitmap, 0f, 0f, bitmapPaint)
         } else {
             canvas.drawRoundRect(rect, radius, radius, placeholderPaint)
-            app?.let { drawLabel(canvas, it.label) }
+            val input = input
+            if (input != null) drawInput(canvas, input) else app?.let { drawLabel(canvas, it.label, height / 2f) }
         }
         if (isFocused || moving) {
             borderPaint.color = if (moving) movingColor else focusColor
@@ -73,10 +89,24 @@ class TileView(context: Context) : View(context) {
         }
     }
 
-    private fun drawLabel(canvas: Canvas, label: String) {
+    /** Label centered on [centerY]. */
+    private fun drawLabel(canvas: Canvas, label: String, centerY: Float) {
         val text = TextUtils.ellipsize(label, labelPaint, width * 0.85f, TextUtils.TruncateAt.END)
-        val y = height / 2f - (labelPaint.ascent() + labelPaint.descent()) / 2
+        val y = centerY - (labelPaint.ascent() + labelPaint.descent()) / 2
         canvas.drawText(text, 0, text.length, width / 2f, y, labelPaint)
+    }
+
+    /** Icon above the label, the pair centered vertically, like an app tile without a banner. */
+    private fun drawInput(canvas: Canvas, input: TvInputs.Input) {
+        val iconSize = (baseIconSize * minOf(1f, height.toFloat() / baseHeight)).toInt()
+        val labelHeight = labelPaint.fontSpacing
+        val top = ((height - iconSize - labelHeight) / 2).toInt()
+        val left = (width - iconSize) / 2
+        inputIcon?.apply {
+            setBounds(left, top, left + iconSize, top + iconSize)
+            draw(canvas)
+        }
+        drawLabel(canvas, input.label, top + iconSize + labelHeight / 2)
     }
 
     override fun onFocusChanged(gainFocus: Boolean, direction: Int, previouslyFocusedRect: Rect?) {

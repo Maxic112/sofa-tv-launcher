@@ -30,6 +30,7 @@ class MainActivity : Activity(), HomeAdapter.Listener {
     private lateinit var settingsButton: View
     private lateinit var sleepButton: TextView
     private lateinit var updateBox: View
+    private lateinit var inputsButton: View
     private val onUpdateChanged: () -> Unit = {
         updateUpdateButton()
         panel.refresh()
@@ -96,6 +97,10 @@ class MainActivity : Activity(), HomeAdapter.Listener {
         settingsButton.setOnClickListener { pages.openRoot() }
         clean.setOnClickListener { app.cleaner.clean(packageName) }
         sleepButton.setOnClickListener { showSleepTimer() }
+        inputsButton = findViewById(R.id.inputs)
+        inputsButton.setOnClickListener { app.inputs.showPicker(this) }
+        inputsButton.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus -> if (hasFocus) layout.scrollToPosition(0) }
+        applyHeaderButtons()
         updateBox = findViewById(R.id.update_box)
         val update = findViewById<View>(R.id.update)
         update.setOnClickListener { pages.openUpdates(install = true) }
@@ -173,7 +178,21 @@ class MainActivity : Activity(), HomeAdapter.Listener {
     /** From settings: hidden apps or the status line changed. */
     private fun onHomeSettingsChanged() {
         rebuild()
+        applyHeaderButtons()
         applyStatusVisibility()
+    }
+
+    /** Optional header buttons; if the focused one disappears, focus moves to Settings. */
+    private fun applyHeaderButtons() {
+        val store = app.store
+        for ((view, shown) in listOf(
+            inputsButton to store.inputsButton,
+            sleepButton to store.sleepButton,
+            findViewById<View>(R.id.clean) to store.cleanButton,
+        )) {
+            if (!shown && view.hasFocus()) settingsButton.requestFocus()
+            view.visibility = if (shown) View.VISIBLE else View.GONE
+        }
     }
 
     /** The "Update" button with its orange dot is shown only while a newer release is known. */
@@ -235,7 +254,7 @@ class MainActivity : Activity(), HomeAdapter.Listener {
         layout = HomeLayoutManager(this, span)
         layout.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int) =
-                if (adapter.getItemViewType(position) == HomeAdapter.TYPE_TILE) 1 else span
+                if (HomeAdapter.isTile(adapter.getItemViewType(position))) 1 else span
         }
         grid.layoutManager = layout
         grid.adapter = adapter
@@ -262,10 +281,19 @@ class MainActivity : Activity(), HomeAdapter.Listener {
         val items = ArrayList<HomeItem>(apps.size + 2)
 
         val favorites = store.favorites.mapNotNull { byPkg[it] }
+        // TV inputs above the favorites, or below them; without favorites they simply come first.
+        val inputs = if (store.inputsOnHome) app.inputs.list() else emptyList()
+        fun addInputs() {
+            if (inputs.isEmpty()) return
+            items.add(HeaderItem(ID_HEADER_INPUTS, getString(R.string.inputs)))
+            inputs.forEach { items.add(InputItem(idOf("i:" + it.id), it)) }
+        }
+        if (!store.inputsBelowFavorites || favorites.isEmpty()) addInputs()
         if (favorites.isNotEmpty()) {
             items.add(HeaderItem(ID_HEADER_FAVORITES, getString(R.string.section_favorites)))
             favorites.forEach { items.add(AppItem(idOf("f:" + it.pkg), it, true, it.pkg == movingPkg)) }
         }
+        if (store.inputsBelowFavorites && favorites.isNotEmpty()) addInputs()
         val rest = apps.filter { !store.isFavorite(it.pkg) && it.pkg !in store.hidden }
         // With favorites, "All apps" can collapse under a button, as in Android TV:
         // the home screen shows only what's needed, and collapsed tiles aren't created at all.
@@ -288,7 +316,7 @@ class MainActivity : Activity(), HomeAdapter.Listener {
     }
 
     private fun focusFirstTile() {
-        val position = adapter.items.indexOfFirst { it is AppItem }
+        val position = adapter.items.indexOfFirst { it.isTile }
         if (position >= 0) focusPosition(position)
     }
 
@@ -296,8 +324,8 @@ class MainActivity : Activity(), HomeAdapter.Listener {
     private fun focusPosition(position: Int) {
         val items = adapter.items
         var target = position.coerceAtMost(items.size - 1)
-        while (target >= 0 && items[target] !is AppItem) target--
-        if (target < 0) target = items.indexOfFirst { it is AppItem }
+        while (target >= 0 && !items[target].isTile) target--
+        if (target < 0) target = items.indexOfFirst { it.isTile }
         if (target < 0) return
         if (layout.findViewByPosition(target) == null) {
             // First tile of a section: scroll to its header so it doesn't go off screen.
@@ -327,6 +355,14 @@ class MainActivity : Activity(), HomeAdapter.Listener {
         rebuild()
         val target = candidates.firstNotNullOfOrNull { item -> adapter.positionOf(item.id).takeIf { it >= 0 } }
         if (target != null) focusPosition(target) else focusFirstTile()
+    }
+
+    private val HomeItem.isTile: Boolean
+        get() = this is AppItem || this is InputItem
+
+    override fun onInput(item: InputItem) {
+        if (movingPkg != null) return
+        app.inputs.open(this, item.input)
     }
 
     override fun onToggleAllApps() {
@@ -448,6 +484,7 @@ class MainActivity : Activity(), HomeAdapter.Listener {
         const val ID_HEADER_FAVORITES = -1L
         const val ID_HEADER_ALL = -2L
         const val ID_ALL_APPS_BUTTON = -3L
+        const val ID_HEADER_INPUTS = -4L
         const val FOCUS_ATTEMPTS = 5
         const val SLEEP_TICK_MS = 5_000L
     }

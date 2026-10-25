@@ -96,6 +96,9 @@
     <string name="panel_hidden">Status panel is off</string>
     <string name="action_sleep_timer">Sofa TV: sleep timer</string>
     <string name="action_clean_memory">Sofa TV: clean memory</string>
+    <string name="action_input_picker">Sofa TV: choose input</string>
+    <string name="action_pick_input">TV input…</string>
+    <string name="action_input_named">Input: %s</string>
 
     <!-- Status panel -->
     <string name="stat_temp" translatable="false">%d°</string>
@@ -205,7 +208,7 @@
     <string name="group_keys">Remote keys</string>
     <string name="group_status">Status panel</string>
     <string name="group_clean">Memory cleanup</string>
-    <string name="group_apps">App list</string>
+    <string name="group_apps">Home screen</string>
     <string name="group_hidden">Hidden apps</string>
     <string name="service_toggle">Key service</string>
     <string name="service_off_warning">The Sofa TV service is off: key remapping and Home interception do not work. Turn on “Key service” below.</string>
@@ -243,6 +246,17 @@
     <string name="language_system_value">System (%s)</string>
     <string name="language_en" translatable="false">English</string>
     <string name="language_ru" translatable="false">Русский</string>
+
+    <!-- Inputs -->
+    <string name="inputs">Inputs</string>
+    <string name="inputs_pick">Choose input</string>
+    <string name="inputs_button">“Inputs” button in the header</string>
+    <string name="inputs_above_favorites">Show inputs above favorites</string>
+    <string name="inputs_below_favorites">Show inputs below favorites</string>
+    <string name="inputs_hint">Inputs on the home screen are tiles for each TV input (HDMI, tuner, AV). Without favorites they come first, before all apps.</string>
+    <string name="sleep_button_shown">“Sleep timer” button</string>
+    <string name="clean_button_shown">“Clean memory” button</string>
+    <string name="inputs_none">No TV inputs found</string>
 
     <!-- Updates -->
     <string name="updates">Updates</string>

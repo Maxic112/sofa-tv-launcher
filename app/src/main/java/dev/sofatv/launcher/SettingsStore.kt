@@ -62,6 +62,15 @@ class SettingsStore(context: Context) {
     /** Tile height as a percentage of the standard one (16:9 of the tile width). */
     var tileHeightPercent = 100
 
+    /** TV inputs ([TvInputs]): a header button and a row of input tiles above or below the favorites. */
+    var inputsButton = true
+
+    /** Header buttons "Sleep timer" and "Clean memory" on the home screen. */
+    var sleepButton = true
+    var cleanButton = true
+    var inputsOnHome = false
+    var inputsBelowFavorites = false
+
     /** Interface language: [Language.SYSTEM] or a code from [Language.CHOICES]. */
     var language = Language.SYSTEM
 
@@ -141,6 +150,11 @@ class SettingsStore(context: Context) {
                     .put("collapseAllApps", collapseAllApps)
                     .put("gridColumns", gridColumns)
                     .put("tileHeightPercent", tileHeightPercent)
+                    .put("inputsButton", inputsButton)
+                    .put("sleepButton", sleepButton)
+                    .put("cleanButton", cleanButton)
+                    .put("inputsOnHome", inputsOnHome)
+                    .put("inputsBelowFavorites", inputsBelowFavorites)
                     .put("language", language),
             )
         val out = try {
@@ -194,6 +208,11 @@ class SettingsStore(context: Context) {
             collapseAllApps = ui.optBoolean("collapseAllApps", collapseAllApps)
             gridColumns = ui.optInt("gridColumns", gridColumns)
             tileHeightPercent = ui.optInt("tileHeightPercent", tileHeightPercent)
+            inputsButton = ui.optBoolean("inputsButton", inputsButton)
+            sleepButton = ui.optBoolean("sleepButton", sleepButton)
+            cleanButton = ui.optBoolean("cleanButton", cleanButton)
+            inputsOnHome = ui.optBoolean("inputsOnHome", inputsOnHome)
+            inputsBelowFavorites = ui.optBoolean("inputsBelowFavorites", inputsBelowFavorites)
             language = ui.optString("language", language).takeIf { it in Language.CHOICES } ?: Language.SYSTEM
         }
         json.optJSONObject("update")?.let { update ->

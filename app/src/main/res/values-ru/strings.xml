@@ -93,6 +93,9 @@
     <string name="panel_hidden">Панель мониторинга выключена</string>
     <string name="action_sleep_timer">Sofa TV: таймер сна</string>
     <string name="action_clean_memory">Sofa TV: очистить память</string>
+    <string name="action_input_picker">Sofa TV: выбор входа</string>
+    <string name="action_pick_input">Вход ТВ…</string>
+    <string name="action_input_named">Вход: %s</string>
 
     <!-- Status panel -->
     <string name="stat_freq">%.1f ГГц</string>
@@ -190,7 +193,7 @@
     <string name="group_keys">Кнопки пульта</string>
     <string name="group_status">Панель состояния</string>
     <string name="group_clean">Очистка памяти</string>
-    <string name="group_apps">Список приложений</string>
+    <string name="group_apps">Главный экран</string>
     <string name="group_hidden">Скрытые приложения</string>
     <string name="service_toggle">Служба кнопок</string>
     <string name="service_off_warning">Служба Sofa TV выключена — переназначение кнопок и перехват Home не работают. Включите «Служба кнопок» ниже.</string>
@@ -224,6 +227,17 @@
     <string name="language">Язык</string>
     <string name="language_system">Как в системе</string>
     <string name="language_system_value">Как в системе (%s)</string>
+
+    <!-- Inputs -->
+    <string name="inputs">Входы</string>
+    <string name="inputs_pick">Выбрать вход</string>
+    <string name="inputs_button">Кнопка «Входы» в шапке</string>
+    <string name="inputs_above_favorites">Показывать входы над избранным</string>
+    <string name="inputs_below_favorites">Показывать входы под избранным</string>
+    <string name="inputs_hint">Входы на главном экране — плитки для каждого входа ТВ (HDMI, тюнер, AV). Без избранного они идут первыми, перед всеми приложениями.</string>
+    <string name="sleep_button_shown">Кнопка «Таймер сна»</string>
+    <string name="clean_button_shown">Кнопка «Очистить память»</string>
+    <string name="inputs_none">Входы ТВ не найдены</string>
 
     <!-- Updates -->
     <string name="updates">Обновления</string>

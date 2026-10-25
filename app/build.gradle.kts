@@ -20,8 +20,8 @@ android {
         applicationId = "dev.sofatv.launcher"
         minSdk = 24
         targetSdk = 36
-        versionCode = 46
-        versionName = "0.14.2"
+        versionCode = 47
+        versionName = "0.15.0"
         resValue("string", "update_url", updateUrl)
         // Plain HTTP only for a local test server; GitHub is HTTPS.
         manifestPlaceholders["usesCleartextTraffic"] = updateUrl.startsWith("http:").toString()

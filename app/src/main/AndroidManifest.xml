@@ -51,6 +51,21 @@
             <action android:name="android.settings.APPLICATION_DETAILS_SETTINGS" />
             <data android:scheme="package" />
         </intent>
+        <!-- TV inputs (TvInputs): input services, the system input picker, the TV app that opens an input. -->
+        <intent>
+            <action android:name="android.media.tv.TvInputService" />
+        </intent>
+        <intent>
+            <action android:name="com.android.tv.action.VIEW_INPUTS" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="vnd.android.cursor.item/channel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:mimeType="vnd.android.cursor.dir/channel" />
+        </intent>
         <!-- Updates: the "install unknown apps" screen for the launcher. -->
         <intent>
             <action android:name="android.settings.MANAGE_UNKNOWN_APP_SOURCES" />

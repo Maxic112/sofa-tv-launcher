@@ -20,7 +20,7 @@ import dev.sofatv.launcher.SettingsPanel.Tone
  *  - Remote keys: service, Home interception, remapping, timings, exclusions;
  *  - Status panel: on home, over apps, period, what to show;
  *  - Memory cleanup: method, exclusions;
- *  - App list: hidden apps, collapsing, grid (columns, tile height);
+ *  - Home screen: TV inputs, hidden apps, collapsing, grid (columns, tile height);
  *  - Performance: hardware acceleration, RAM used;
  *  - Language; Android settings; updates (version, check, install).
  */
@@ -343,6 +343,17 @@ class SettingsPages(
                         }
                     })
                 })
+                add(Row(str(R.string.action_pick_input), MORE, icon = R.drawable.ic_input_hdmi) {
+                    panel.push(Page(str(R.string.action_pick_input)) {
+                        val inputs = app.inputs.list()
+                        if (inputs.isEmpty()) return@Page listOf(Row(str(R.string.inputs_none)))
+                        inputs.map { input ->
+                            Row(input.label, mark(current?.type == KeyAction.INPUT && current.arg == input.id), icon = input.icon) {
+                                assign(KeyAction(KeyAction.INPUT, input.id, input.label), 2)
+                            }
+                        }
+                    })
+                })
                 add(Row(str(R.string.action_pick_shortcut), MORE, icon = R.drawable.ic_shortcut) { pickShortcut { assign(it, 2) } })
                 add(Row(str(R.string.action_pick_intent), MORE, icon = R.drawable.ic_link) { inputIntent { assign(it, 1) } })
             }
@@ -483,6 +494,13 @@ class SettingsPages(
 
     private fun appsGroup() = Page(str(R.string.group_apps)) {
         listOf(
+            Row(str(R.string.inputs), MORE, icon = R.drawable.ic_input_hdmi) { panel.push(inputsPage()) },
+            Row(str(R.string.sleep_button_shown), icon = R.drawable.ic_bedtime, checked = store.sleepButton) {
+                changeHome { store.sleepButton = !store.sleepButton }
+            },
+            Row(str(R.string.clean_button_shown), icon = R.drawable.ic_cleaning_services, checked = store.cleanButton) {
+                changeHome { store.cleanButton = !store.cleanButton }
+            },
             Row(str(R.string.group_hidden), count(store.hidden.size), icon = R.drawable.ic_visibility_off) { panel.push(hiddenPage()) },
             Row(str(R.string.collapse_all_apps), icon = R.drawable.ic_unfold_less, checked = store.collapseAllApps) {
                 store.collapseAllApps = !store.collapseAllApps
@@ -498,6 +516,47 @@ class SettingsPages(
                 panel.push(heightPage())
             },
         )
+    }
+
+    // ---- TV inputs ----
+
+    /** "Above" and "below" the favorites work as a pair: turning one on turns the other off. */
+    private fun inputsPage() = Page(str(R.string.inputs)) {
+        listOf(
+            Row(str(R.string.inputs_pick), icon = R.drawable.ic_input) { app.inputs.showPicker(activity) },
+            Row(str(R.string.inputs_button), icon = R.drawable.ic_input_hdmi, checked = store.inputsButton) {
+                changeHome { store.inputsButton = !store.inputsButton }
+            },
+            Row(
+                str(R.string.inputs_above_favorites), icon = R.drawable.ic_layers,
+                checked = store.inputsOnHome && !store.inputsBelowFavorites,
+            ) {
+                changeHome {
+                    val on = store.inputsOnHome && !store.inputsBelowFavorites
+                    store.inputsOnHome = !on
+                    store.inputsBelowFavorites = false
+                }
+            },
+            Row(
+                str(R.string.inputs_below_favorites), icon = R.drawable.ic_layers,
+                checked = store.inputsOnHome && store.inputsBelowFavorites,
+            ) {
+                changeHome {
+                    val on = store.inputsOnHome && store.inputsBelowFavorites
+                    store.inputsOnHome = !on
+                    store.inputsBelowFavorites = !on
+                }
+            },
+            Row(str(R.string.inputs_hint)),
+        )
+    }
+
+    /** Saves a home screen setting and applies it right away. */
+    private fun changeHome(change: () -> Unit) {
+        change()
+        store.save()
+        onHomeChanged()
+        panel.refresh()
     }
 
     // ---- Grid: columns and tile height ----

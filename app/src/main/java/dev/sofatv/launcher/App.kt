@@ -29,6 +29,8 @@ class App : Application() {
         private set
     lateinit var updater: Updater
         private set
+    lateinit var inputs: TvInputs
+        private set
 
     /** The home screen is currently shown (between onResume and onPause). */
     var homeVisible = false
@@ -49,6 +51,7 @@ class App : Application() {
         cleaner = MemoryCleaner(this, background, store)
         memory = ProcessMemory(this, background)
         updater = Updater(this, store)
+        inputs = TvInputs(this)
 
         val packages = IntentFilter().apply {
             addAction(Intent.ACTION_PACKAGE_ADDED)
